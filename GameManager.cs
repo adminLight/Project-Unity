@@ -11,13 +11,26 @@ public class GameManager : MonoBehaviour
 
     }
     public State state;
+
+    [SerializeField] bool musicButton;
     public bool inLive;
 
     void Awake() {
         state = State.start;
+        
         BattleStart();
 
     }
+    void BGMmusic(bool musicButton)
+    {
+        if(musicButton)
+        {
+            
+        }
+    }
+
+
+
     void BattleStart()
     {
         // 전주 시작시 캐릭터 등장/애니매이션 등 효과 넣기

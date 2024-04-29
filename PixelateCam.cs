@@ -8,7 +8,20 @@ using UnityEngine;
 public class PixelateCam : MonoBehaviour
 {
     [Range(1,100)] public int pixelate;
+    [SerializeField] GameObject player; //카메라가 따라갈 플레이어
+    [SerializeField] Vector3 PlayerDistance;
 
+    private void Awake() {
+        //카메라와 플레이거 거리 초기화
+        PlayerDistance = new Vector3(0,26,-50); 
+
+    }
+    private void Update() {
+        
+        transform.position = player.transform.position + PlayerDistance;
+    }
+
+    //픽셀 렌더러
     private void OnRenderImage(RenderTexture src, RenderTexture dest) 
     {
         src.filterMode = FilterMode.Point;
@@ -18,4 +31,5 @@ public class PixelateCam : MonoBehaviour
         Graphics.Blit(resultTextuer, dest);
         RenderTexture.ReleaseTemporary(resultTextuer);
     }
+
 }
